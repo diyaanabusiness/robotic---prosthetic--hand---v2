@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#101513" />
+    <title>Fivefold | Hand tracker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <script type="module" src="app.js"></script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <a class="wordmark" href="./" aria-label="Fivefold home"><span class="brand-mark">5</span>fivefold</a>
+        <div class="topbar-note"><span class="live-dot"></span> ON-DEVICE VISION</div>
+      </header>
+
+      <section class="workspace" aria-labelledby="page-title">
+        <div class="intro">
+          <div class="eyebrow">MEDIAPIPE · HAND LANDMARK</div>
+          <h1 id="page-title">Your hand,<br /><span>in five signals.</span></h1>
+          <p>Raise or fold a finger. See its state update in real time.</p>
+        </div>
+
+        <div class="tracker-layout">
+          <section class="camera-panel" aria-label="Camera preview">
+            <div class="panel-heading">
+              <span>CAMERA</span>
+              <span id="camera-status" class="camera-status">NOT CONNECTED</span>
+            </div>
+            <div class="preview-wrap">
+              <video id="camera" autoplay playsinline muted></video>
+              <canvas id="preview" aria-label="Mirrored camera preview with hand landmark overlay"></canvas>
+              <div id="preview-message" class="preview-message">
+                <div class="hand-glyph" aria-hidden="true">✋</div>
+                <span>Your preview appears here</span>
+              </div>
+              <div class="preview-corner corner-tl"></div>
+              <div class="preview-corner corner-tr"></div>
+              <div class="preview-corner corner-bl"></div>
+              <div class="preview-corner corner-br"></div>
+            </div>
+            <div class="camera-footer">
+              <span id="tracking-hint">Allow camera access to begin</span>
+              <button id="camera-button" class="camera-button" type="button">
+                <span class="button-icon" aria-hidden="true">◉</span>
+                <span>Start camera</span>
+              </button>
+            </div>
+          </section>
+
+          <section class="readout" aria-labelledby="readout-title">
+            <div class="readout-heading">
+              <div>
+                <div class="eyebrow">LIVE READOUT</div>
+                <h2 id="readout-title">Finger state</h2>
+              </div>
+              <div class="open-count" aria-live="polite">
+                <span id="open-count">–</span><small>/ 5</small>
+              </div>
+            </div>
+
+            <div class="finger-list" aria-live="polite">
+              <div class="finger-row" data-finger="thumb">
+                <span class="finger-number">01</span><span class="finger-name">Thumb</span><span class="state-pill unknown">WAITING</span>
+              </div>
+              <div class="finger-row" data-finger="index">
+                <span class="finger-number">02</span><span class="finger-name">Index</span><span class="state-pill unknown">WAITING</span>
+              </div>
+              <div class="finger-row" data-finger="middle">
+                <span class="finger-number">03</span><span class="finger-name">Middle</span><span class="state-pill unknown">WAITING</span>
+              </div>
+              <div class="finger-row" data-finger="ring">
+                <span class="finger-number">04</span><span class="finger-name">Ring</span><span class="state-pill unknown">WAITING</span>
+              </div>
+              <div class="finger-row" data-finger="pinky">
+                <span class="finger-number">05</span><span class="finger-name">Pinky</span><span class="state-pill unknown">WAITING</span>
+              </div>
+            </div>
+
+            <div class="readout-footer">
+              <span class="legend"><i class="legend-dot open"></i>OPEN</span>
+              <span class="legend"><i class="legend-dot closed"></i>CLOSED</span>
+              <span class="readout-note">ONE HAND · FIVE FINGERS</span>
+            </div>
+          </section>
+        </div>
+
+        <footer class="page-footer">
+          <span>FIVEFOLD <span class="footer-divider">/</span> HAND LANDMARK DEMO</span>
+          <span>VIDEO PROCESSED IN YOUR BROWSER</span>
+        </footer>
+      </section>
+    </main>
+  </body>
+</html>
